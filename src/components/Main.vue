@@ -61,6 +61,8 @@ const isShow = reactive([
   },
 ])
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
 const getList = async (url, id, max, type) => {
   const output = new Array()
   const set = new Set()
@@ -194,6 +196,7 @@ const update = async () => {
           'followee',
         )
       }
+      await sleep(100)
       for (let j = 0; j < data.followers.length; j++) {
         addList(
           data.followers[j].id,
@@ -203,28 +206,29 @@ const update = async () => {
           'follower',
         )
       }
+      await sleep(100)
     }
   }
   changeList()
 }
 
-const changeList = () => {
+const changeList = async () => {
   listShow.value = []
-  if (mode.value == '') {
+  if (mode.value === '') {
     isShow[0].followers = true
     isShow[0].following = true
     isShow[1].followers = true
     isShow[1].following = true
   }
-  list.forEach((item) => {
+  for (const item of list) {
     let add = false
-    if (mode.value == 'or') {
+    if (mode.value === 'or') {
       add =
         (isShow[0].followers && item.value[0].followers) ||
         (isShow[0].following && item.value[0].following) ||
         (isShow[1].followers && item.value[1].followers) ||
         (isShow[1].following && item.value[1].following)
-    } else if (mode.value == 'and') {
+    } else if (mode.value === 'and') {
       add =
         isShow[0].followers === item.value[0].followers &&
         isShow[0].following === item.value[0].following &&
@@ -233,10 +237,11 @@ const changeList = () => {
     } else {
       add = true
     }
-    if (add == true) {
+    if (add) {
       listShow.value.push({ ...item })
     }
-  })
+    await sleep(10)
+  }
 }
 
 const changeCondition = (i) => {
