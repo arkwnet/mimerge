@@ -409,4 +409,27 @@ const changeCondition = (i) => {
 .main .onetouch .button:hover {
   background-color: #bdbdbd;
 }
+
+@media screen and (max-width: 850px) {
+  .main .left,
+  .main .right,
+  .main .left .text,
+  .main .right .text,
+  .main .update .button,
+  .main .mode select {
+    width: 100%;
+  }
+
+  .main .right {
+    margin-top: 8px;
+  }
+
+  .main .update .button {
+    margin-top: 16px;
+  }
+
+  .main .onetouch .button {
+    margin-bottom: 6px;
+  }
+}
 </style>

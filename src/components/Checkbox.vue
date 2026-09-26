@@ -1,6 +1,5 @@
 <template>
   <div class="checkbox">
-    <div class="label">{{ label }}</div>
     <label class="switch">
       <input
         type="checkbox"
@@ -9,6 +8,7 @@
       />
       <div class="slider"><div class="circle"></div></div>
     </label>
+    <div class="label">{{ label }}</div>
   </div>
 </template>
 
@@ -23,15 +23,9 @@ const emit = defineEmits(['update:value'])
 
 <style scoped lang="css">
 .checkbox {
-  margin-right: 12px;
+  margin-right: 18px;
   float: left;
   overflow: hidden;
-}
-
-.checkbox .label {
-  margin-right: 4px;
-  padding: 2px;
-  float: left;
 }
 
 .checkbox .switch .slider {
@@ -68,5 +62,20 @@ const emit = defineEmits(['update:value'])
 
 .checkbox .switch input[type='checkbox']:checked + .slider .circle {
   left: 23px;
+}
+
+.checkbox .label {
+  margin-left: 8px;
+  padding: 2px;
+  float: left;
+  color: #424242;
+}
+
+@media screen and (max-width: 700px) {
+  .checkbox {
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
 }
 </style>
