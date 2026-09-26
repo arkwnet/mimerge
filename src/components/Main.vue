@@ -37,6 +37,10 @@
       <div v-for="note in listShow" v-bind:key="note.id">
         <Note :avatarUrl="note.avatarUrl" :name="note.name" :userid="note.id" :value="note.value" />
       </div>
+      <div class="button" v-if="isMoreButton" @click="addItem">
+        <span>もっと見る</span>
+        <img src="../assets/more.svg" alt="" />
+      </div>
     </div>
   </div>
 </template>
@@ -50,6 +54,8 @@ const inputModel = ref([''], [''])
 const list = new Array()
 const listShow = ref(new Array())
 const mode = ref('')
+const pointer = ref(0)
+const isMoreButton = ref(false)
 const isShow = reactive([
   {
     followers: true,
@@ -61,7 +67,9 @@ const isShow = reactive([
   },
 ])
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+const sleep = (ms) => {
+  new Promise((resolve) => setTimeout(resolve, ms))
+}
 
 const getList = async (url, id, max, type) => {
   const output = new Array()
@@ -212,7 +220,7 @@ const update = async () => {
   changeList()
 }
 
-const changeList = async () => {
+const changeList = () => {
   listShow.value = []
   if (mode.value === '') {
     isShow[0].followers = true
@@ -220,7 +228,14 @@ const changeList = async () => {
     isShow[1].followers = true
     isShow[1].following = true
   }
-  for (const item of list) {
+  pointer.value = 0
+  addItem()
+}
+
+const addItem = async () => {
+  let hit = 0
+  for (let i = 0; i < list.length; i++) {
+    const item = list[pointer.value]
     let add = false
     if (mode.value === 'or') {
       add =
@@ -239,8 +254,21 @@ const changeList = async () => {
     }
     if (add) {
       listShow.value.push({ ...item })
+      hit++
+    }
+    pointer.value++
+    if (pointer.value >= list.length) {
+      break
+    }
+    if (hit >= 50) {
+      break
     }
     await sleep(10)
+  }
+  if (pointer.value + 1 < list.length) {
+    isMoreButton.value = true
+  } else {
+    isMoreButton.value = false
   }
 }
 
@@ -413,6 +441,31 @@ const changeCondition = (i) => {
 
 .main .onetouch .button:hover {
   background-color: #bdbdbd;
+}
+
+.main .list .button {
+  width: 100%;
+  height: 32px;
+  margin-top: 12px;
+  padding: 4px 0;
+  color: #424242;
+  background-color: #e0e0e0;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.main .list .button:hover {
+  background-color: #bdbdbd;
+}
+
+.main .list .button img {
+  width: 20px;
+  height: 20px;
 }
 
 @media screen and (max-width: 850px) {
