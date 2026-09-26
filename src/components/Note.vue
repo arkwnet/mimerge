@@ -29,77 +29,77 @@ import { defineProps } from 'vue'
 const props = defineProps(['avatarUrl', 'name', 'userid', 'value'])
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 .note {
   margin-bottom: 2px;
   padding: 10px 15px;
   overflow: hidden;
   background-color: #fff;
-}
 
-.note .avatar {
-  width: 70px;
-  float: left;
-}
+  .avatar {
+    width: 70px;
+    float: left;
 
-.note .avatar img {
-  width: 50px;
-  height: 50px;
-  margin-left: 0px;
-  border-radius: 25px;
-}
+    img {
+      width: 50px;
+      height: 50px;
+      margin-left: 0px;
+      border-radius: 25px;
+    }
+  }
 
-.note .user {
-  width: 400px;
-  float: left;
-}
+  .user {
+    width: 400px;
+    float: left;
 
-.note .user .name {
-  padding-top: 3px;
-  color: #212121;
-  font-size: 18px;
-  font-weight: bold;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
+    .name {
+      padding-top: 3px;
+      color: #212121;
+      font-size: 18px;
+      font-weight: bold;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
 
-.note .user .userid {
-  margin-top: -4px;
-  color: #616161;
-}
+    .userid {
+      margin-top: -4px;
+      color: #616161;
+    }
+  }
 
-.note .information {
-  margin-left: 20px;
-  padding-top: 12px;
-  float: left;
-  overflow: hidden;
-}
+  .information {
+    margin-left: 20px;
+    padding-top: 12px;
+    float: left;
+    overflow: hidden;
 
-.note .information .name {
-  margin-right: 6px;
-  padding: 2px;
-  float: left;
-}
+    .name {
+      margin-right: 6px;
+      padding: 2px;
+      float: left;
+    }
 
-.note .information .chip {
-  height: 28px;
-  margin: 0 4px;
-  padding: 2px 14px;
-  color: #fff;
-  background-color: #f44336;
-  border-radius: 6px;
-  float: left;
-}
+    .chip {
+      height: 28px;
+      margin: 0 4px;
+      padding: 2px 14px;
+      color: #fff;
+      background-color: #f44336;
+      border-radius: 6px;
+      float: left;
+    }
 
-.note .information .following {
-  background-color: #f44336;
-}
+    .following {
+      background-color: #f44336;
+    }
 
-.note .information .followers {
-  background-color: #2196f3;
-}
+    .followers {
+      background-color: #2196f3;
+    }
 
-.note .information .disabled {
-  opacity: 0.3;
+    .disabled {
+      opacity: 0.3;
+    }
+  }
 }
 </style>

@@ -315,157 +315,157 @@ const changeCondition = (i) => {
 }
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 .main {
   padding: 20px;
-}
 
-.main .information {
-  margin-bottom: 10px;
-  padding: 10px;
-  color: #757575;
-  background-color: #b3e5fc;
-  border-radius: 5px;
-}
+  .information {
+    margin-bottom: 10px;
+    padding: 10px;
+    color: #757575;
+    background-color: #b3e5fc;
+    border-radius: 5px;
+  }
 
-.main .input {
-  overflow: hidden;
-}
+  .input {
+    overflow: hidden;
 
-.main .left,
-.main .right {
-  width: 340px;
-  float: left;
-}
+    .description {
+      height: 28px;
+      color: #757575;
+    }
 
-.main .input .description {
-  height: 28px;
-  color: #757575;
-}
+    .text {
+      width: 320px;
+      height: 32px;
+      margin-right: 10px;
+      padding-left: 4px;
+      float: left;
+      border: 0;
+      border-radius: 4px;
+      outline: 0;
 
-.main .input .text {
-  width: 320px;
-  height: 32px;
-  margin-right: 10px;
-  padding-left: 4px;
-  float: left;
-  border: 0;
-  border-radius: 4px;
-  outline: 0;
-}
+      &:focus {
+        border: 1px solid #8bc34a;
+        outline: 0;
+      }
+    }
+  }
 
-.main .input .text:focus {
-  border: 1px solid #8bc34a;
-  outline: 0;
-}
+  .left,
+  .right {
+    width: 340px;
+    float: left;
+  }
 
-.main .update .button {
-  width: 100px;
-  height: 32px;
-  margin-top: 28px;
-  padding: 4px 0;
-  color: #fff;
-  background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-  border-radius: 16px;
-  float: left;
-  text-align: center;
-}
+  .update .button {
+    width: 100px;
+    height: 32px;
+    margin-top: 28px;
+    padding: 4px 0;
+    color: #fff;
+    background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+    border-radius: 16px;
+    float: left;
+    text-align: center;
 
-.main .update .button:hover {
-  background: #8bc34a;
-  cursor: pointer;
-}
+    &:hover {
+      background: #8bc34a;
+      cursor: pointer;
+    }
+  }
 
-.main .list {
-  margin-top: 15px;
-}
+  .list {
+    margin-top: 15px;
 
-.main .mode select {
-  width: 660px;
-  margin-top: 16px;
-  margin-bottom: 4px;
-  padding: 6px 12px;
-  background-color: #fff;
-  border: solid 1px #fff;
-  border-radius: 6px;
-}
+    .button {
+      width: 100%;
+      height: 32px;
+      margin-top: 12px;
+      padding: 4px 0;
+      color: #424242;
+      background-color: #e0e0e0;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background-color 0.1s ease;
 
-.main .mode select:hover {
-  border: solid 1px #bdbdbd;
-}
+      &:hover {
+        background-color: #bdbdbd;
+      }
 
-.main .condition {
-  margin: 10px 0;
-  overflow: hidden;
-}
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
 
-.main .condition .button {
-  width: 100px;
-  height: 32px;
-  margin-top: 28px;
-  margin-right: 6px;
-  padding: 4px 0;
-  color: #fff;
-  background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-  border-radius: 16px;
-  float: left;
-  text-align: center;
-}
+  .mode select {
+    width: 660px;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    padding: 6px 12px;
+    background-color: #fff;
+    border: solid 1px #fff;
+    border-radius: 6px;
 
-.main .onetouch {
-  margin: 10px 0;
-  overflow: hidden;
-}
+    &:hover {
+      border: solid 1px #bdbdbd;
+    }
+  }
 
-.main .onetouch .description,
-.main .onetouch .button {
-  float: left;
-}
+  .condition {
+    margin: 10px 0;
+    overflow: hidden;
 
-.main .onetouch .description {
-  margin-right: 10px;
-  padding: 4px 0;
-}
+    .button {
+      width: 100px;
+      height: 32px;
+      margin-top: 28px;
+      margin-right: 6px;
+      padding: 4px 0;
+      color: #fff;
+      background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+      border-radius: 16px;
+      float: left;
+      text-align: center;
+    }
+  }
 
-.main .onetouch .button {
-  height: 32px;
-  margin: 0 4px;
-  padding: 4px 10px;
-  color: #424242;
-  background-color: #e0e0e0;
-  border-radius: 3px;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.1s ease;
-}
+  .onetouch {
+    margin: 10px 0;
+    overflow: hidden;
 
-.main .onetouch .button:hover {
-  background-color: #bdbdbd;
-}
+    .description,
+    .button {
+      float: left;
+    }
 
-.main .list .button {
-  width: 100%;
-  height: 32px;
-  margin-top: 12px;
-  padding: 4px 0;
-  color: #424242;
-  background-color: #e0e0e0;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  cursor: pointer;
-  transition: background-color 0.1s ease;
-}
+    .description {
+      margin-right: 10px;
+      padding: 4px 0;
+    }
 
-.main .list .button:hover {
-  background-color: #bdbdbd;
-}
+    .button {
+      height: 32px;
+      margin: 0 4px;
+      padding: 4px 10px;
+      color: #424242;
+      background-color: #e0e0e0;
+      border-radius: 3px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.1s ease;
 
-.main .list .button img {
-  width: 20px;
-  height: 20px;
+      &:hover {
+        background-color: #bdbdbd;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 850px) {

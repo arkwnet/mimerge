@@ -18,17 +18,17 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 .footer {
   padding: 20px;
   color: #757575;
-}
 
-.footer a {
-  color: #757575;
-}
+  a {
+    color: #757575;
 
-.footer a:hover {
-  color: #9e9e9e;
+    &:hover {
+      color: #9e9e9e;
+    }
+  }
 }
 </style>

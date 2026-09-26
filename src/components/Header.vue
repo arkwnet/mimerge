@@ -6,18 +6,18 @@
   </div>
 </template>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 .header {
   height: 80px;
   background-color: #fff;
-}
 
-.header .logo {
-  padding-top: 10px;
-  padding-left: 20px;
-}
+  .logo {
+    padding-top: 10px;
+    padding-left: 20px;
 
-.header .logo img {
-  height: 60px;
+    img {
+      height: 60px;
+    }
+  }
 }
 </style>
