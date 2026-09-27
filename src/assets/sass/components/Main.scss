@@ -1,0 +1,176 @@
+@use '../color';
+
+.main {
+  padding: 20px;
+
+  .information {
+    margin-bottom: 10px;
+    padding: 10px;
+    color: color.$grey-600;
+    background-color: color.$lightblue-100;
+    border-radius: 5px;
+  }
+
+  .input {
+    overflow: hidden;
+
+    .description {
+      height: 28px;
+      color: color.$grey-600;
+    }
+
+    .text {
+      width: 320px;
+      height: 32px;
+      margin-right: 10px;
+      padding-left: 4px;
+      float: left;
+      border: 0;
+      border-radius: 4px;
+      outline: 0;
+
+      &:focus {
+        border: 1px solid color.$lightgreen-500;
+        outline: 0;
+      }
+    }
+  }
+
+  .left,
+  .right {
+    width: 340px;
+    float: left;
+  }
+
+  .update .button {
+    width: 100px;
+    height: 32px;
+    margin-top: 28px;
+    padding: 4px 0;
+    color: color.$white;
+    background: linear-gradient(to top, color.$teal-500 0%, color.$teal-300 100%);
+    border-radius: 16px;
+    float: left;
+    text-align: center;
+
+    &:hover {
+      background: color.$lightgreen-500;
+      cursor: pointer;
+    }
+  }
+
+  .list {
+    margin-top: 15px;
+
+    .button {
+      width: 100%;
+      height: 32px;
+      margin-top: 12px;
+      padding: 4px 0;
+      color: color.$grey-800;
+      background-color: color.$grey-300;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background-color 0.1s ease;
+
+      &:hover {
+        background-color: color.$grey-400;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .mode select {
+    width: 660px;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    padding: 6px 12px;
+    background-color: color.$white;
+    border: solid 1px color.$white;
+    border-radius: 6px;
+
+    &:hover {
+      border: solid 1px color.$grey-400;
+    }
+  }
+
+  .condition {
+    margin: 10px 0;
+    overflow: hidden;
+
+    .button {
+      width: 100px;
+      height: 32px;
+      margin-top: 28px;
+      margin-right: 6px;
+      padding: 4px 0;
+      color: color.$white;
+      background: linear-gradient(to top, color.$teal-500 0%, color.$teal-300 100%);
+      border-radius: 16px;
+      float: left;
+      text-align: center;
+    }
+  }
+
+  .onetouch {
+    margin: 10px 0;
+    overflow: hidden;
+
+    .description,
+    .button {
+      float: left;
+    }
+
+    .description {
+      margin-right: 10px;
+      padding: 4px 0;
+    }
+
+    .button {
+      height: 32px;
+      margin: 0 4px;
+      padding: 4px 10px;
+      color: color.$grey-800;
+      background-color: color.$grey-300;
+      border-radius: 3px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.1s ease;
+
+      &:hover {
+        background-color: color.$grey-400;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .main .left,
+  .main .right,
+  .main .left .text,
+  .main .right .text,
+  .main .update .button,
+  .main .mode select {
+    width: 100%;
+  }
+
+  .main .right {
+    margin-top: 8px;
+  }
+
+  .main .update .button {
+    margin-top: 16px;
+  }
+
+  .main .onetouch .button {
+    margin-bottom: 6px;
+  }
+}

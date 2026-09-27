@@ -1,0 +1,14 @@
+@use '../color';
+
+.footer {
+  padding: 20px;
+  color: color.$grey-600;
+
+  a {
+    color: color.$grey-600;
+
+    &:hover {
+      color: color.$grey-500;
+    }
+  }
+}
