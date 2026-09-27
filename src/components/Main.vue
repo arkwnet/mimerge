@@ -34,8 +34,8 @@
       <div class="button" @click="changeCondition(5)">Bだけ未フォロー</div>
     </div>
     <div class="list">
-      <div v-for="note in listShow" v-bind:key="note.id">
-        <Note :avatarUrl="note.avatarUrl" :name="note.name" :userid="note.id" :value="note.value" />
+      <div v-for="user in listShow" v-bind:key="user.id">
+        <User :avatarUrl="user.avatarUrl" :name="user.name" :userid="user.id" :value="user.value" />
       </div>
       <div class="button" v-if="isMoreButton" @click="addItem">
         <span>もっと見る</span>
@@ -49,7 +49,7 @@
 import { reactive, ref } from 'vue'
 import axios from 'axios'
 import Checkbox from './Checkbox.vue'
-import Note from './Note.vue'
+import User from './User.vue'
 const inputModel = ref([''], [''])
 const list = new Array()
 const listShow = ref(new Array())

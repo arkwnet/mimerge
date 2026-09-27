@@ -1,9 +1,9 @@
 <template>
-  <div class="note">
+  <div class="user">
     <div class="avatar">
       <img :src="avatarUrl" />
     </div>
-    <div class="user">
+    <div class="profile">
       <div class="name">{{ name }}</div>
       <div class="userid">{{ userid }}</div>
     </div>
@@ -29,4 +29,4 @@ import { defineProps } from 'vue'
 const props = defineProps(['avatarUrl', 'name', 'userid', 'value'])
 </script>
 
-<style src="../assets/sass/components/Note.scss" lang="scss" scoped></style>
+<style src="../assets/sass/components/User.scss" lang="scss" scoped></style>
