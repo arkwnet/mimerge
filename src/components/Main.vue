@@ -39,7 +39,7 @@
       </div>
       <div class="button" v-if="isMoreButton" @click="addItem">
         <span>もっと見る</span>
-        <img src="../assets/more.svg" alt="" />
+        <img src="../assets/img/more.svg" alt="" />
       </div>
     </div>
   </div>
@@ -316,14 +316,16 @@ const changeCondition = (i) => {
 </script>
 
 <style scoped lang="scss">
+@use '../assets/sass/color';
+
 .main {
   padding: 20px;
 
   .information {
     margin-bottom: 10px;
     padding: 10px;
-    color: #757575;
-    background-color: #b3e5fc;
+    color: color.$grey-600;
+    background-color: color.$lightblue-100;
     border-radius: 5px;
   }
 
@@ -332,7 +334,7 @@ const changeCondition = (i) => {
 
     .description {
       height: 28px;
-      color: #757575;
+      color: color.$grey-600;
     }
 
     .text {
@@ -346,7 +348,7 @@ const changeCondition = (i) => {
       outline: 0;
 
       &:focus {
-        border: 1px solid #8bc34a;
+        border: 1px solid color.$lightgreen-500;
         outline: 0;
       }
     }
@@ -363,14 +365,14 @@ const changeCondition = (i) => {
     height: 32px;
     margin-top: 28px;
     padding: 4px 0;
-    color: #fff;
-    background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+    color: color.$white;
+    background: linear-gradient(to top, color.$teal-500 0%, color.$teal-300 100%);
     border-radius: 16px;
     float: left;
     text-align: center;
 
     &:hover {
-      background: #8bc34a;
+      background: color.$lightgreen-500;
       cursor: pointer;
     }
   }
@@ -383,8 +385,8 @@ const changeCondition = (i) => {
       height: 32px;
       margin-top: 12px;
       padding: 4px 0;
-      color: #424242;
-      background-color: #e0e0e0;
+      color: color.$grey-800;
+      background-color: color.$grey-300;
       border-radius: 16px;
       display: flex;
       align-items: center;
@@ -394,7 +396,7 @@ const changeCondition = (i) => {
       transition: background-color 0.1s ease;
 
       &:hover {
-        background-color: #bdbdbd;
+        background-color: color.$grey-400;
       }
 
       img {
@@ -409,12 +411,12 @@ const changeCondition = (i) => {
     margin-top: 16px;
     margin-bottom: 4px;
     padding: 6px 12px;
-    background-color: #fff;
-    border: solid 1px #fff;
+    background-color: color.$white;
+    border: solid 1px color.$white;
     border-radius: 6px;
 
     &:hover {
-      border: solid 1px #bdbdbd;
+      border: solid 1px color.$grey-400;
     }
   }
 
@@ -428,8 +430,8 @@ const changeCondition = (i) => {
       margin-top: 28px;
       margin-right: 6px;
       padding: 4px 0;
-      color: #fff;
-      background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+      color: color.$white;
+      background: linear-gradient(to top, color.$teal-500 0%, color.$teal-300 100%);
       border-radius: 16px;
       float: left;
       text-align: center;
@@ -454,15 +456,15 @@ const changeCondition = (i) => {
       height: 32px;
       margin: 0 4px;
       padding: 4px 10px;
-      color: #424242;
-      background-color: #e0e0e0;
+      color: color.$grey-800;
+      background-color: color.$grey-300;
       border-radius: 3px;
       text-align: center;
       cursor: pointer;
       transition: background-color 0.1s ease;
 
       &:hover {
-        background-color: #bdbdbd;
+        background-color: color.$grey-400;
       }
     }
   }

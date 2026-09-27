@@ -30,11 +30,13 @@ const props = defineProps(['avatarUrl', 'name', 'userid', 'value'])
 </script>
 
 <style scoped lang="scss">
+@use '../assets/sass/color';
+
 .note {
   margin-bottom: 2px;
   padding: 10px 15px;
   overflow: hidden;
-  background-color: #fff;
+  background-color: color.$white;
 
   .avatar {
     width: 70px;
@@ -54,7 +56,7 @@ const props = defineProps(['avatarUrl', 'name', 'userid', 'value'])
 
     .name {
       padding-top: 3px;
-      color: #212121;
+      color: color.$grey-900;
       font-size: 18px;
       font-weight: bold;
       overflow-wrap: break-word;
@@ -63,7 +65,7 @@ const props = defineProps(['avatarUrl', 'name', 'userid', 'value'])
 
     .userid {
       margin-top: -4px;
-      color: #616161;
+      color: color.$grey-700;
     }
   }
 
@@ -83,18 +85,18 @@ const props = defineProps(['avatarUrl', 'name', 'userid', 'value'])
       height: 28px;
       margin: 0 4px;
       padding: 2px 14px;
-      color: #fff;
-      background-color: #f44336;
+      color: color.$white;
+      background-color: color.$red-500;
       border-radius: 6px;
       float: left;
     }
 
     .following {
-      background-color: #f44336;
+      background-color: color.$red-500;
     }
 
     .followers {
-      background-color: #2196f3;
+      background-color: color.$blue-500;
     }
 
     .disabled {

@@ -19,15 +19,17 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
+@use '../assets/sass/color';
+
 .footer {
   padding: 20px;
-  color: #757575;
+  color: color.$grey-600;
 
   a {
-    color: #757575;
+    color: color.$grey-600;
 
     &:hover {
-      color: #9e9e9e;
+      color: color.$grey-500;
     }
   }
 }

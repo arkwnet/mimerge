@@ -22,6 +22,8 @@ const emit = defineEmits(['update:value'])
 </script>
 
 <style scoped lang="scss">
+@use '../assets/sass/color';
+
 .checkbox {
   margin-right: 18px;
   float: left;
@@ -32,7 +34,7 @@ const emit = defineEmits(['update:value'])
       width: 48px;
       height: 28px;
       position: relative;
-      background-color: #bdbdbd;
+      background-color: color.$grey-400;
       border-radius: 14px;
       display: block;
       user-select: none;
@@ -52,7 +54,7 @@ const emit = defineEmits(['update:value'])
     position: absolute;
     left: 5px;
     top: 4px;
-    background-color: #fff;
+    background-color: color.$white;
     border-radius: 10px;
     transition: left 0.1s ease;
   }
@@ -61,12 +63,12 @@ const emit = defineEmits(['update:value'])
     margin-left: 8px;
     padding: 2px;
     float: left;
-    color: #424242;
+    color: color.$grey-800;
   }
 }
 
 .checkbox .switch input[type='checkbox']:checked + .slider {
-  background-color: #4caf50;
+  background-color: color.$green-500;
 }
 
 .checkbox .switch input[type='checkbox']:checked + .slider .circle {

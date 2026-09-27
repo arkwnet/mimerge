@@ -1,15 +1,17 @@
 <template>
   <div class="header">
     <div class="logo">
-      <img src="../assets/logo.png" />
+      <img src="../assets/img/logo.png" />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+@use '../assets/sass/color';
+
 .header {
   height: 80px;
-  background-color: #fff;
+  background-color: color.$white;
 
   .logo {
     padding-top: 10px;

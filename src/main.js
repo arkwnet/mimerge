@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import VueGtag from 'vue-gtag'
-import './assets/main.css'
+import './assets/sass/main.scss'
 
 createApp(App)
   .use(VueGtag, {
