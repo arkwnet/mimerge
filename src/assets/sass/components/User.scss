@@ -1,61 +1,74 @@
 @use '../color';
 
 .user {
+  height: 70px;
   margin-bottom: 2px;
   padding: 10px 15px;
   overflow: hidden;
   background-color: color.$white;
 
-  .avatar {
-    width: 70px;
-    float: left;
-
-    img {
-      width: 50px;
-      height: 50px;
-      margin-left: 0px;
-      border-radius: 25px;
-    }
-  }
-
   .profile {
-    width: 400px;
+    width: 480px;
     float: left;
 
-    .name {
-      padding-top: 3px;
-      color: color.$grey-900;
-      font-size: 18px;
-      font-weight: bold;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
+    .avatar {
+      width: 70px;
+      float: left;
+
+      img {
+        width: 50px;
+        height: 50px;
+        margin-left: 0px;
+        border-radius: 25px;
+      }
     }
 
-    .userid {
-      margin-top: -4px;
-      color: color.$grey-700;
+    .text {
+      width: calc(100% - 70px);
+      float: left;
+
+      .name {
+        width: 100%;
+        height: 29px;
+        padding-top: 3px;
+        color: color.$grey-900;
+        font-size: 18px;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .userid {
+        margin-top: -4px;
+        height: 24px;
+        color: color.$grey-700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 
   .information {
     margin-left: 20px;
-    padding-top: 12px;
+    padding-top: 11px;
     float: left;
     overflow: hidden;
 
     .name {
       margin-right: 6px;
-      padding: 2px;
+      padding: 3px;
+      color: color.$grey-900;
       float: left;
     }
 
     .chip {
       height: 28px;
       margin: 0 4px;
-      padding: 2px 14px;
+      padding: 3px 14px;
       color: color.$white;
-      background-color: color.$red-500;
-      border-radius: 6px;
+      border-radius: 14px;
       float: left;
     }
 
@@ -69,6 +82,40 @@
 
     .disabled {
       opacity: 0.3;
+    }
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .user .profile {
+    width: 360px;
+  }
+}
+
+@media screen and (max-width: 1079px) {
+  .user {
+    height: 104px;
+
+    .profile {
+      width: 100%;
+    }
+
+    .information {
+      margin-left: 0;
+      margin-right: 20px;
+      padding-top: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .user {
+    height: 138px;
+
+    .information {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 6px;
     }
   }
 }

@@ -34,29 +34,30 @@
         outline: 0;
       }
     }
+
+    .update .button {
+      width: 100px;
+      height: 32px;
+      margin-top: 28px;
+      padding: 5px 0;
+      color: color.$white;
+      font-weight: bold;
+      background: linear-gradient(to top, color.$teal-500 0%, color.$teal-300 100%);
+      border-radius: 16px;
+      float: left;
+      text-align: center;
+
+      &:hover {
+        background: color.$lightgreen-500;
+        cursor: pointer;
+      }
+    }
   }
 
   .left,
   .right {
     width: 340px;
     float: left;
-  }
-
-  .update .button {
-    width: 100px;
-    height: 32px;
-    margin-top: 28px;
-    padding: 4px 0;
-    color: color.$white;
-    background: linear-gradient(to top, color.$teal-500 0%, color.$teal-300 100%);
-    border-radius: 16px;
-    float: left;
-    text-align: center;
-
-    &:hover {
-      background: color.$lightgreen-500;
-      cursor: pointer;
-    }
   }
 
   .list {
@@ -88,17 +89,25 @@
     }
   }
 
-  .mode select {
-    width: 660px;
+  .mode {
     margin-top: 16px;
-    margin-bottom: 4px;
-    padding: 6px 12px;
-    background-color: color.$white;
-    border: solid 1px color.$white;
-    border-radius: 6px;
 
-    &:hover {
-      border: solid 1px color.$grey-400;
+    .description {
+      height: 28px;
+      color: color.$grey-600;
+    }
+
+    select {
+      width: 660px;
+      margin-bottom: 4px;
+      padding: 6px 12px;
+      background-color: color.$white;
+      border: solid 1px color.$white;
+      border-radius: 6px;
+
+      &:hover {
+        border: solid 1px color.$grey-400;
+      }
     }
   }
 
@@ -121,7 +130,7 @@
   }
 
   .onetouch {
-    margin: 10px 0;
+    margin: 12px 0;
     overflow: hidden;
 
     .description,
@@ -162,15 +171,17 @@
     width: 100%;
   }
 
-  .main .right {
-    margin-top: 8px;
-  }
+  .main {
+    .right {
+      margin-top: 10px;
+    }
 
-  .main .update .button {
-    margin-top: 16px;
-  }
+    .input .update .button {
+      margin-top: 14px;
+    }
 
-  .main .onetouch .button {
-    margin-bottom: 6px;
+    .onetouch .button {
+      margin-bottom: 6px;
+    }
   }
 }

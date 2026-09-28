@@ -12,6 +12,7 @@
       <div class="update"><div class="button" @click="update">更新</div></div>
     </div>
     <div class="mode">
+      <div class="description">表示条件</div>
       <select v-model="mode" @change="changeList">
         <option value="">全てのアカウント</option>
         <option value="or">ORで絞り込む</option>
@@ -35,7 +36,13 @@
     </div>
     <div class="list">
       <div v-for="user in listShow" v-bind:key="user.id">
-        <User :avatarUrl="user.avatarUrl" :name="user.name" :userid="user.id" :value="user.value" />
+        <User
+          :avatar="user.avatar"
+          :name="user.name"
+          :id="user.id"
+          :url="user.url"
+          :value="user.value"
+        />
       </div>
       <div class="button" v-if="isMoreButton" @click="addItem">
         <span>もっと見る</span>
@@ -99,8 +106,9 @@ const getList = async (url, id, max, type) => {
           if (set.has(id) == false) {
             output.push({
               id: id,
-              avatarUrl: response.data[j].followee.avatarUrl,
+              avatar: response.data[j].followee.avatarUrl,
               name: response.data[j].followee.name,
+              url: response.data[j].followee.url,
             })
             set.add(id)
           }
@@ -109,8 +117,9 @@ const getList = async (url, id, max, type) => {
           if (set.has(id) == false) {
             output.push({
               id: id,
-              avatarUrl: response.data[j].follower.avatarUrl,
+              avatar: response.data[j].follower.avatarUrl,
               name: response.data[j].follower.name,
+              url: response.data[j].follower.url,
             })
             set.add(id)
           }
@@ -162,21 +171,24 @@ const isValid = (str) => {
   return matches !== null && matches.length >= 2
 }
 
-const addList = (id, avatarUrl, name, index, type) => {
+const addList = (id, avatar, name, url, index, type) => {
   let position = list.findIndex((el) => el.id === id)
   if (position == -1) {
     list.push({
       id: id,
-      avatarUrl: avatarUrl,
+      avatar: avatar,
       name: name,
+      url: url,
       value: [
         {
           followers: false,
           following: false,
+          url: null,
         },
         {
           followers: false,
           following: false,
+          url: null,
         },
       ],
     })
@@ -184,8 +196,12 @@ const addList = (id, avatarUrl, name, index, type) => {
   }
   if (type == 'followee') {
     list[position].value[index].following = true
+    list[position].value[index].url =
+      'https://' + inputModel.value[index].split('@').pop() + '/' + id
   } else if (type == 'follower') {
     list[position].value[index].followers = true
+    list[position].value[index].url =
+      'https://' + inputModel.value[index].split('@').pop() + '/' + id
   }
   return
 }
@@ -198,8 +214,9 @@ const update = async () => {
       for (let j = 0; j < data.following.length; j++) {
         addList(
           data.following[j].id,
-          data.following[j].avatarUrl,
+          data.following[j].avatar,
           data.following[j].name,
+          data.following[j].url,
           i,
           'followee',
         )
@@ -208,8 +225,9 @@ const update = async () => {
       for (let j = 0; j < data.followers.length; j++) {
         addList(
           data.followers[j].id,
-          data.followers[j].avatarUrl,
+          data.followers[j].avatar,
           data.followers[j].name,
+          data.followers[j].url,
           i,
           'follower',
         )
