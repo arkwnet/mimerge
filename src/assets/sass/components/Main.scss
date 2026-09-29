@@ -187,31 +187,32 @@
     top: 0;
     background-color: color.$black;
     opacity: 0.5;
+    z-index: 900;
+  }
+
+  .dialog {
+    width: 120px;
+    height: 120px;
+    position: fixed;
+    left: calc(50% - 60px);
+    top: calc(50% - 60px);
+    background-color: color.$white;
+    border-radius: 10px;
     z-index: 1000;
 
-    .dialog {
-      width: 120px;
-      height: 120px;
-      position: fixed;
-      left: calc(50% - 60px);
-      top: calc(50% - 60px);
-      background-color: color.$white;
-      border-radius: 10px;
+    .loader {
+      width: 50px;
+      margin: 35px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 8px solid color.$green-100;
+      border-right-color: color.$green-700;
+      animation: l2 1s infinite linear;
+    }
 
-      .loader {
-        width: 50px;
-        margin: 35px;
-        aspect-ratio: 1;
-        border-radius: 50%;
-        border: 8px solid color.$green-100;
-        border-right-color: color.$green-700;
-        animation: l2 1s infinite linear;
-      }
-
-      @keyframes l2 {
-        to {
-          transform: rotate(1turn);
-        }
+    @keyframes l2 {
+      to {
+        transform: rotate(1turn);
       }
     }
   }

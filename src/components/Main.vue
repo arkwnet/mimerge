@@ -62,7 +62,8 @@
         <img src="../assets/img/more.svg" alt="" />
       </div>
     </div>
-    <div class="cover" v-if="isLoading">
+    <div v-if="isLoading">
+      <div class="cover"></div>
       <div class="dialog"><div class="loader"></div></div>
     </div>
   </div>
