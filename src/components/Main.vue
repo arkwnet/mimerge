@@ -1,5 +1,16 @@
 <template>
   <div class="main">
+    <div class="information">
+      <div class="left">
+        <img src="../assets/img/info.svg" />
+      </div>
+      <div class="right">
+        1～2つのMisskeyアカウントのフォローやフォロワーを比較するツールです。<br />
+        テキストボックスへMisskeyのユーザとサーバ名 (@arkw@misskey.ioのようなフォーマット)
+        を入力後、「更新」ボタンをクリックしてください。<br />
+        表示条件を「ORで絞り込む」に切り替えるといずれかの条件に一致するアカウント、「ANDで絞り込む」に切り替えると全てのチェックボックスに一致するアカウントのみ表示します。
+      </div>
+    </div>
     <div class="input">
       <div class="left">
         <div class="description">アカウントA (例: @arkw@misskey.io)</div>
@@ -9,7 +20,9 @@
         <div class="description">アカウントB (例: @arkw@mi.arkw.work)</div>
         <input type="text" class="text" v-model="inputModel[1]" />
       </div>
-      <div class="update"><div class="button" @click="update">更新</div></div>
+      <div class="update">
+        <div class="button" @click="update">更新</div>
+      </div>
     </div>
     <div class="mode">
       <div class="description">表示条件</div>
@@ -49,6 +62,9 @@
         <img src="../assets/img/more.svg" alt="" />
       </div>
     </div>
+    <div class="cover" v-if="isLoading">
+      <div class="dialog"><div class="loader"></div></div>
+    </div>
   </div>
 </template>
 
@@ -63,6 +79,7 @@ const listShow = ref(new Array())
 const mode = ref('')
 const pointer = ref(0)
 const isMoreButton = ref(false)
+const isLoading = ref(false)
 const isShow = reactive([
   {
     followers: true,
@@ -78,7 +95,7 @@ const sleep = (ms) => {
   new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-const getList = async (url, id, max, type) => {
+const getList = async (host, url, id, max, type) => {
   const output = new Array()
   const set = new Set()
   let count = 0
@@ -86,13 +103,13 @@ const getList = async (url, id, max, type) => {
   for (let i = 0; i < max / 100 + 2; i++) {
     let response
     if (next != null) {
-      response = await axios.post(url, {
+      response = await axios.post('https://' + host + url, {
         userId: id,
         limit: 100,
         untilId: next,
       })
     } else {
-      response = await axios.post(url, {
+      response = await axios.post('https://' + host + url, {
         userId: id,
         limit: 100,
       })
@@ -101,8 +118,13 @@ const getList = async (url, id, max, type) => {
       if (j == response.data.length - 1) {
         next = response.data[j].id
       } else {
+        let id
         if (type == 'followee') {
-          const id = '@' + response.data[j].followee.username + '@' + response.data[j].followee.host
+          if (response.data[j].followee.host != null) {
+            id = '@' + response.data[j].followee.username + '@' + response.data[j].followee.host
+          } else {
+            id = '@' + response.data[j].followee.username + '@' + host
+          }
           if (set.has(id) == false) {
             output.push({
               id: id,
@@ -113,7 +135,11 @@ const getList = async (url, id, max, type) => {
             set.add(id)
           }
         } else if (type == 'follower') {
-          const id = '@' + response.data[j].follower.username + '@' + response.data[j].follower.host
+          if (response.data[j].follower.host != null) {
+            id = '@' + response.data[j].follower.username + '@' + response.data[j].follower.host
+          } else {
+            id = '@' + response.data[j].follower.username + '@' + host
+          }
           if (set.has(id) == false) {
             output.push({
               id: id,
@@ -150,13 +176,15 @@ const getUser = async (id) => {
     userId: user.data[0].id,
   })
   output.followers = await getList(
-    'https://' + userhost[2] + '/api/users/followers',
+    userhost[2],
+    '/api/users/followers',
     user.data[0].id,
     stats.data.followingCount,
     'follower',
   )
   output.following = await getList(
-    'https://' + userhost[2] + '/api/users/following',
+    userhost[2],
+    '/api/users/following',
     user.data[0].id,
     stats.data.followingCount,
     'followee',
@@ -207,6 +235,7 @@ const addList = (id, avatar, name, url, index, type) => {
 }
 
 const update = async () => {
+  isLoading.value = true
   list.splice(0)
   for (let i = 0; i < 2; i++) {
     if (isValid(inputModel.value[i]) == true) {
@@ -236,6 +265,7 @@ const update = async () => {
     }
   }
   changeList()
+  isLoading.value = false
 }
 
 const changeList = () => {

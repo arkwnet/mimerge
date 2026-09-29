@@ -3,7 +3,7 @@
     <div class="profile">
       <a :href="url" target="blank">
         <div class="avatar">
-          <img :src="avatar" />
+          <img :src="avatar || noimage" @error="error" />
         </div>
         <div class="text">
           <div class="name">{{ name }}</div>
@@ -46,7 +46,11 @@
 
 <script setup lang="js">
 import { defineProps } from 'vue'
+import noimage from '../assets/img/noimage.png'
 const props = defineProps(['avatar', 'name', 'id', 'url', 'value'])
+const error = (event) => {
+  event.target.src = noimage
+}
 </script>
 
 <style src="../assets/sass/components/User.scss" lang="scss" scoped></style>
