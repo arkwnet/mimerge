@@ -13,7 +13,8 @@
   "dependencies": {
     "axios": "^1.7.9",
     "vue": "^3.5.13",
-    "vue-gtag": "^2.0.1"
+    "vue-gtag": "^2.0.1",
+    "vue3-google-adsense": "^1.2.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
